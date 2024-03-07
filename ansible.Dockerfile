@@ -10,14 +10,16 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     apt-get clean
 
 ## Set the locale
-
-RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
-    locale-gen
     
 ENV LANG=en_US.UTF-8 \ 
     LANGUAGE=en_US \ 
     LC_ALL=en_US.UTF-8 \
     SHELL=/bin/bash
+
+RUN printf '%s\n' LANG=en_US LC_ALL=en_US.UTF-8 >/etc/default/locale
+RUN echo en_US.UTF-8 UTF-8 >>/etc/locale.gen
+RUN locale-gen
+
 
 ## Set up Ansible
 RUN pip3 install --upgrade pip && \
