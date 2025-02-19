@@ -1,11 +1,11 @@
 # image for intel and amd cpus
-#FROM --platform=linux/amd64 debian:bullseye-slim
+#FROM --platform=linux/amd64 debian:12-slim
 
 # image for arm cpus
-FROM --platform=linux/arm64 debian:bullseye-slim
+FROM --platform=linux/arm64 debian:12-slim
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
-    apt-get install -y locales python3-pip python3-full git openssh-client vim procps && \
+    apt-get install -y locales python3-pip python3-full git openssh-client vim procps mtr iputils-ping iproute2 && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
