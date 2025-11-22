@@ -19,9 +19,9 @@ jobs:
             file: ansible.Dockerfile
             context: .
 
-          - name: mpz-racadm
-            file: racadm.Dockerfile
-            context: .       
+          # - name: mpz-racadm
+          #   file: racadm.Dockerfile
+          #   context: .       
 
 
     name: Build ${{ matrix.image.name }}
